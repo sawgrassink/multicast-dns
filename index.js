@@ -31,7 +31,9 @@ module.exports = function (opts) {
   })
 
   socket.on('error', function (err) {
-    if (err.code === 'EACCES' || err.code === 'EADDRINUSE') that.emit('error', err)
+    if (err.code === 'EACCES' || err.code === 'EADDRINUSE') {
+      // absorb the error - it truly does not matter for our use case
+    }
     else that.emit('warning', err)
   })
 
